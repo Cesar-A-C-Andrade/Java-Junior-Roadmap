@@ -10,7 +10,7 @@ public class BaseCharacter implements IDamageable{
     private String name;
     private int experienceAmount = 0;
     private int level = 1;
-    private int currentExperienceCap = 10;
+    private int currentExperienceCap = 1;
 
     public BaseCharacter(String PName, int PlifeAmout, int PAttackDamage, int PDefensePower, int PLifeRegem,int PDefenseLevel, int PAttackLevel) {
         this.lifeComponent = new LifeComponent(PlifeAmout, PDefensePower, PLifeRegem, PDefenseLevel);
@@ -62,6 +62,7 @@ public class BaseCharacter implements IDamageable{
     }
 
     private void LevelUp() {
+        System.out.println("Congratulation u have level up! ur level now is " + level);
         this.level += 1;
         this.currentExperienceCap += 10;
         this.experienceAmount = 0;
@@ -70,12 +71,11 @@ public class BaseCharacter implements IDamageable{
         System.out.println("Press 1 for defense or 2 for attack");
         Scanner _sc = new Scanner(System.in);
         int _result = _sc.nextInt();
-        if (_result == 0){
+        if (_result == 1){
             lifeComponent.UpDefense();
         }else{
             attackComponent.UpAttack();
         }
-        _sc.close();
     }
 
 }
