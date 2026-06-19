@@ -46,6 +46,9 @@ public class Enemy implements IDamageable, IFight {
 
     @Override
     public void EndTurn() {
+        if (!this.lifeComponent.IsAlive()){
+            return;
+        }
         lifeComponent.SetIsDefending(false);
         lifeComponent.ApplyDebuffs();
     }

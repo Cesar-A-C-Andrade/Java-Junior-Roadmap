@@ -29,7 +29,10 @@ public class LifeComponent implements IDamageable {
         }
         System.out.println("Taking damage equals " + PDamageAmount);
         this.life -= PDamageAmount;
-        this.debuffs.addAll(List.of(PDebuffs));
+        System.out.println(PDebuffs.length);
+        if (PDebuffs.length > 0){
+            this.debuffs.addAll(List.of(PDebuffs));
+        }
         if (this.life <= 0){
             Die();
         }
@@ -70,18 +73,20 @@ public class LifeComponent implements IDamageable {
     }
 
     public int ApplyDamageReduction(int PTotalDamageTaken) {
-        return PTotalDamageTaken - this.defensePower - this.defenseLevel;
+        return Integer.min(1 , PTotalDamageTaken - this.defensePower - this.defenseLevel) ;
     }
 
     public void UpLife() {
         maxLife += 5;
-        RestoreLife(maxLife);
+        life = maxLife;
     }
 
     public void ApplyDebuffs() {
+
         for (IDebuff _debuff : this.debuffs){
             _debuff.ApplyDebuff(this);
         }
+
         this.debuffs.removeIf(debuff -> debuff.RoundsLeft() == 0);
     }
 

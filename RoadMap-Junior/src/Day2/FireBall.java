@@ -4,7 +4,7 @@ public class FireBall implements IBaseAttack {
 
     private int fireDamage;
     private int debuffRounds;
-
+    private String name = "FireBall";
 
     public FireBall(int PFireDamage, int PDebuffRounds) {
         this.fireDamage = PFireDamage;
@@ -19,5 +19,10 @@ public class FireBall implements IBaseAttack {
     @Override
     public int CalculateDamage(int PAttackLevel) {
         return fireDamage + PAttackLevel;
+    }
+
+    @Override
+    public String GetAttackName() {
+        return name;
     }
 }

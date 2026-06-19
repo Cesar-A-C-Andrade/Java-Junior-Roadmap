@@ -3,7 +3,7 @@ package Day2;
 public class NormalAttack implements IBaseAttack {
 
     private int attackDamage = 0;
-
+    private String name = "Normal";
 
     public NormalAttack(int PAttackDamage) {
         this.attackDamage = PAttackDamage;
@@ -18,5 +18,10 @@ public class NormalAttack implements IBaseAttack {
     @Override
     public int CalculateDamage(int PAttackLevel) {
         return this.attackDamage + PAttackLevel;
+    }
+
+    @Override
+    public String GetAttackName() {
+        return name;
     }
 }
